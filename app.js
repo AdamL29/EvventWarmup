@@ -1,3 +1,36 @@
+function makeCookie(event){
+    Cookies.set(`button_clicked`, `yes`);
+}
+document.getElementById(`clickB`).addEventListener(`click`, makeCookie);
+
+function login(){
+    Cookies.set(`username`, `bestUser`);
+}
+
+function logout(){
+    Cookies.remove(`username`);
+}
+
+function switchUser(){
+    // Check current cookie.
+    let currentUser = Cookies.get(`username`);
+    // If the current is bestUser, write the cookie with secondBestUser.
+    if (currentUser == `bestUser`){
+        Cookies.set(`username`, `secondBestUser`);
+    } else{
+        Cookies.set(`username`, `bestUser`)
+    }
+    // Otherwise, write the cooking with bestUser
+}
+
+// Make sure that the `let` below does Cookies.get(`username within the .set)
+let username = Cookies.get(`username`);
+document.getElementById(`userGreet`).innerText = `Hello, ${username}`;
+document.getElementById(`loginbutton`).addEventListener(`click`, login)
+document.getElementById(`logoutbutton`).addEventListener(`click`, logout)
+document.getElementById(`switchuser`).addEventListener(`click`, switchUser)
+
+
 // Section 5 can leave the handler empty.
 function addH3(event){
     let header = document.getElementById(`header`);
